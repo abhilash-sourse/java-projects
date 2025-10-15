@@ -4,8 +4,6 @@ import java.util.Scanner;
 public class slot_machine {
     public static void main(String[] args){
     Scanner scanner = new Scanner(System.in);
-    Random random = new Random();
-
     int balance = 100;
     int bet;
     int payout;
