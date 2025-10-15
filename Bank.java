@@ -8,6 +8,7 @@ public class Bank {
         boolean isRunnung = true;
         int choice;
 
+        while (isRunnung) {
         System.out.println("***************");
         System.out.println("BANKING PROGRAM");
         System.out.println("1.show Balance");
@@ -20,21 +21,54 @@ public class Bank {
         choice = scanner.nextInt();
 
         switch(choice){
-            case 1 : showBalance(balance);;
-            case 2 : balance != balance + deposit();
-            case 3 : balance = balance - withdraw(balance);
-            case 4 : isRunnung = false; break;
-            default: System.out.println("INVALID CHOICE");
+            case 1 : showbalance(balance); break;
+            case 2 : balance += deposit();break;
+            case 3 : balance -= withdraw(balance);break;
+            case 4 : isRunnung = false;break;
+            default: System.out.println("INVALID CHOICE");break;
             
+        }
+    }
+
+        System.out.println("***************************");
+        System.out.println("Thank you! have a nice day!");
+
+        scanner.close();
+    }
+
+    
+
+
+    static void showbalance(double balance){
+        System.out.println("***************");
+        System.out.printf("%.2f\n",balance);
+
+    }
+    static double deposit(){
+        double amount;
+        System.out.println("enter an amount to be deposited: ");
+        amount = scanner.nextDouble();
+        if(amount < 0){
+            System.out.println("Amount can't be negative");
+            return 0;
+        }else{
+        return amount;
         }
 
     }
-    System.out.println("***************************");
-    System.out.println("Thank you! have a nice day!");
-
-    scanner.close();
-}
-
-    static void showbalance(double balance){
-
+    static double withdraw(double balance){
+        double amount;
+        System.out.println("Enter amount to be withdrawn: ");
+        amount = scanner.nextDouble();
+        if(amount > balance){
+            System.out.println("INSUFFICIENT FUNDS");
+            return 0;
+        }else if(amount < 0){
+            System.out.println("Amount can't be negative");
+            return 0;
+        }else{
+            return amount;
+        }
     }
+
+}
